@@ -1,0 +1,32 @@
+[package]
+name = "postcard-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+serde = "1.0.100"
+
+[dependencies.postcard]
+path = ".."
+features = ["use-std"]
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "deser"
+path = "fuzz_targets/deser.rs"
+test = false
+doc = false
+
+[features]
+debug = []
+
+[profile.release]
+debug = true
