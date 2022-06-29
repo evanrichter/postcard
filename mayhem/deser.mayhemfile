@@ -1,0 +1,7 @@
+project: postcard
+target: deser
+
+cmds:
+  - cmd: /deser
+  - cmd: /deser_no_inst @@
+    libfuzzer: false
